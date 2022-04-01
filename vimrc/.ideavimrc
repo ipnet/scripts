@@ -1,0 +1,250 @@
+"==========================================
+" Author  : ipcrystal
+" Email   : mimotronik@gmail.com
+" Desc    : .ideavimrc
+"==========================================
+
+sethandler <C-2> a:ide
+sethandler <C-S-2> a:ide
+sethandler <C-S-6> a:ide
+sethandler <C-A> a:ide
+sethandler <C-B> a:ide
+sethandler <C-C> a:ide
+sethandler <C-D> a:ide
+sethandler <C-E> a:ide
+sethandler <C-F> a:ide
+sethandler <C-G> a:ide
+sethandler <C-H> a:ide
+sethandler <C-I> a:ide
+sethandler <C-J> a:ide
+sethandler <C-K> a:ide
+sethandler <C-L> a:ide
+sethandler <C-M> a:ide
+sethandler <C-N> a:ide
+sethandler <C-O> a:ide
+sethandler <C-P> a:ide
+sethandler <C-Q> a:ide
+sethandler <C-R> a:ide
+sethandler <C-S> a:ide
+sethandler <C-T> a:ide
+sethandler <C-U> a:ide
+sethandler <C-V> a:ide
+sethandler <C-W> a:ide
+sethandler <C-X> a:ide
+sethandler <C-Y> a:ide
+sethandler <C-[> a:ide
+sethandler <C-]> a:ide
+
+
+" """""""""""""""""""" basic start """"""""""""""""""""
+" set leader key
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
+" Copy to system clipboard as well
+set clipboard+=unnamed
+
+" 打开相对行号
+set relativenumber
+
+" search config
+set nohlsearch
+
+set incsearch
+set smartcase
+set ignorecase
+set so=5
+
+set showmode
+set history=100
+
+" """""""""""""""""""" plugins start """"""""""""""""""""
+" usage:  shift + j
+set ideajoin
+
+" Multiple cursors support: <A-n>
+set multiple-cursors
+
+" usage : cs'{ ds' ds'
+set surround
+" project tree ?
+" set NERDTree
+
+set vim-paragraph-motion
+
+set highlightedyank
+" """""""""""""""""""" plugins end""""""""""""""""""""
+
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+" basic key mapping
+noremap L $
+noremap H ^
+vnoremap L $
+vnoremap H ^
+nnoremap ; :
+
+noremap cw caw
+noremap c' ci'
+noremap c" ci"
+noremap c" ci"
+noremap c( ci(
+noremap c) ci)
+noremap c{ ci{
+noremap c} ci}
+noremap c, ct,
+noremap c; ct;
+
+noremap dw daw
+noremap d' da'
+noremap d" da"
+noremap d" da"
+noremap d( da(
+noremap d) da)
+noremap d{ da{
+noremap d} da}
+noremap d, dt,
+noremap d; dt;
+
+noremap yw yaw
+noremap y' yi'
+noremap y" yi"
+noremap y" yi"
+noremap y( yi(
+noremap y) yi)
+noremap y{ yi{
+noremap y} yi}
+noremap y, yt,
+noremap y; yt;
+
+" insert mode jj = Esc
+inoremap jj <Esc>
+inoremap jk <Esc>
+" inoremap kk <Esc>
+
+" clear the highlighted search result
+nnoremap <Leader>sc :nohlsearch<CR>
+
+" Insert mode shortcut
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-d> <Delete>
+
+" easy system clipboard copy/paste
+noremap <space>y "*y
+noremap <space>Y "*Y
+noremap <space>p "*p
+noremap <space>P "*P
+
+" Quit normal mode
+" nnoremap <Leader>q  :wq!<CR>
+" nnoremap <space>Q  :qa!<CR>
+nnoremap <space>q :action CloseContent<cr>
+" nnoremap <space>Q :action ReopenClosedTab<cr>
+
+" edit vimrc
+" nnoremap <Leader>ve :e ~/.ideavimrc<CR>
+" nnoremap <Leader>vw :w!<CR>
+" nnoremap <Leader>vs :source ~/.ideavimrc<CR>
+" nnoremap <Leader>q  :action QuickJavaDoc<CR>
+
+" back and forward
+nnoremap gp :action Back<CR>
+nnoremap gn :action Forward<CR>
+
+" PreviousTab and NextTab
+nnoremap g[ :action PreviousTab<CR>
+nnoremap g] :action NextTab<CR>
+nnoremap [[ :action PreviousTab<CR>
+nnoremap ]] :action NextTab<CR>
+
+" ========== actions ==========
+nnoremap <Leader>a :action GotoAction<CR>
+
+nnoremap == :action ReformatCode<CR>
+vnoremap = :action ReformatCode<CR>
+
+nnoremap <Leader>l :action ReformatCode<CR>
+nnoremap <Leader>o :action OptimizeImports<CR>
+vnoremap <Leader>l :action ReformatCode<CR>
+vnoremap <Leader>o :action OptimizeImports<CR>
+
+" comment
+nnoremap cc :action CommentByLineComment<CR>
+vnoremap cc :action CommentByLineComment<CR>
+
+" rename
+nnoremap R :action RenameElement<CR>
+nnoremap gr :action RenameElement<CR>
+
+" ctrl + alt + b
+nnoremap <Leader>i :action GotoImplementation<CR>
+vnoremap <Leader>i :action GotoImplementation<CR>
+
+" ctrl + alt + b
+nnoremap gi :action GotoImplementation<CR>
+" nnoremap gk :action GotoImplementation<CR>
+
+" ctrl + u
+nnoremap gu :action GotoSuperMethod<CR>
+
+" Go to declaration
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gl :action GotoDeclaration<CR>
+
+" EditorCompleteStatement ctrl + shift + enter
+nnoremap <Leader>k :action EditorCompleteStatement<CR>
+nnoremap <CR> :action EditorCompleteStatement<CR>
+
+" global find
+nnoremap <Leader>f :action FindInPath<CR>
+vnoremap <Leader>f :action FindInPath<CR>
+
+" find in current file
+nnoremap / :action Find<cr>
+vnoremap / :action Find<cr>
+
+" vim search
+nnoremap g/ /
+
+" replace
+" nnoremap <Leader>r :action Replace<CR>
+" vnoremap <Leader>r :action Replace<CR>
+nnoremap <Leader>r :registers<CR>
+
+" go to class
+nnoremap <Leader>n :action GotoClass<CR>
+
+" SearchEverywhere
+" nnoremap <Leader>e :action SearchEverywhere<CR>
+" Goto Next Error
+nnoremap <Leader>e :action GotoNextError<CR>
+
+" find usage
+" nnoremap u :action findusages<cr>
+
+" Redo
+nnoremap U :action $Redo<cr>
+
+" plugin AceJump
+nnoremap <Leader>j :action AceAction<CR>
+nnoremap gj :action AceAction<CR>
+
+" debug and run
+nnoremap <space>b :action ToggleLineBreakpoint<cr>
+nnoremap \r :action RunClass<cr>
+nnoremap \R :action Run<cr>
+nnoremap \d :action DebugClass<cr>
+nnoremap \\ :action DebugClass<cr>
+nnoremap \D :action Debug<cr>
+nnoremap \c :action CheckStyleCurrentFileAction<cr>
+
+" collapse and expand
+nnoremap zc :action CollapseRegionRecursively<CR>
+nnoremap zo :action ExpandRegionRecursively<CR>
