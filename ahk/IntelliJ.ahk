@@ -61,6 +61,13 @@ else
     Run,C:\shortcut\datagrip.lnk
     return
 
+capslock & u::
+if WinExist("ahk_exe Code.exe")
+    WinActivate,ahk_exe Code.exe
+else
+    Run,C:\shortcut\vscode.lnk
+    return
+
 capslock & 3::
 if WinExist("ahk_exe navicat.exe")
     WinActivate,ahk_exe navicat.exe
