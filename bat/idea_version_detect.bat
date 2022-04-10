@@ -19,7 +19,8 @@ if "%last_version%"=="000" (
     exit /B
 )
 
-
 echo last_version is %last_version%
+
+echo %last_version%|clip
 
 pause
