@@ -249,6 +249,14 @@ else
     send {End}
 return
 
+LAlt & b::
+Send ^{Left}
+return
+
+LAlt & f::
+Send ^{Right}
+return
+
 capslock & ,::
 Send {PgUp}
 return
