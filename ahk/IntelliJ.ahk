@@ -249,12 +249,8 @@ else
     send {End}
 return
 
-LAlt & b::
+capslock & b::
 Send ^{Left}
-return
-
-LAlt & f::
-Send ^{Right}
 return
 
 capslock & ,::
