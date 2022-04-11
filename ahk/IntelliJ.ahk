@@ -61,7 +61,7 @@ else
     Run,C:\shortcut\datagrip.lnk
     return
 
-capslock & u::
+capslock & z::
 if WinExist("ahk_exe Code.exe")
     WinActivate,ahk_exe Code.exe
 else
@@ -234,7 +234,7 @@ else {
     return
 }
 
-
+; emacs
 capslock & a::
 if GetKeyState("Ctrl", "D")
     Send ^{Home}
@@ -320,11 +320,6 @@ return
 
 ; F5
 capslock & 5::
-Send {F5}
-return
-
-; F5
-capslock & Enter::
 Send {F5}
 return
 
