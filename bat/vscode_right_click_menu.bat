@@ -38,6 +38,7 @@ if exist %path_of_folder%\ (
 
 echo add right key
 
+:: open fodler
 reg delete HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f
 
 reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /ve /d "Open folder as Workspace"
@@ -45,5 +46,14 @@ reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /ve /d "Open fold
 reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /v "Icon" /t REG_EXPAND_SZ /d """"C:\Program Files\Microsoft VS Code\Code.exe""""
 
 reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\Command /f /ve /d "\"C:\Program Files\Microsoft VS Code\Code.exe\" "\"%%V\""
+
+:: open file
+reg delete HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode /f
+
+reg add HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode /f
+
+reg add HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode /f /v "Icon" /t REG_EXPAND_SZ /d """"C:\Program Files\Microsoft VS Code\Code.exe""""
+
+reg add HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode\command /f /ve /d "C:\Program Files\Microsoft VS Code\Code.exe "\"%%1\""
 
 pause
