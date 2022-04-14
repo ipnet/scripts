@@ -1,48 +1,48 @@
 #!/bin/bash
 
-echo -n  "Input a folder where you want install in: "
+echo -n "Input a folder where you want install in: "
 read install_dir
 
 if [ ! $install_dir ]; then
-   echo "Install dir is empty"
-   exit
+  echo "Install dir is empty"
+  exit
 fi
 
-function prepare(){
-    cd $1
-    mkdir etc data log
-    chown -R 999 log data
-    cd -
+function prepare() {
+  cd $1
+  mkdir etc data log
+  chown -R 999 log data
+  cd -
 }
 
-function is_file(){
-    if [ -f $1 ]; then
-        echo "$1 is a file !!! Can not install !!!"
-        exit
-    fi
+function is_file() {
+  if [ -f $1 ]; then
+    echo "$1 is a file !!! Can not install !!!"
+    exit
+  fi
 }
 
 if [ ! -d $install_dir ]; then
-    is_file $install_dir
+  is_file $install_dir
 
-    echo "Install redis in $install_dir"
-    mkdir -p $install_dir
-    prepare $install_dir
+  echo "Install redis in $install_dir"
+  mkdir -p $install_dir
+  prepare $install_dir
 elif [ -d $install_dir ]; then
-    is_file $intall_dir
+  is_file $intall_dir
 
-    if [ "`ls -A $install_dir`" = "" ]; then
-        echo "$install_dir is empty."
-        prepare $install_dir
-    else
-        echo "$install_dir is not empty."
-        exit
-    fi
+  if [ "$(ls -A $install_dir)" = "" ]; then
+    echo "$install_dir is empty."
+    prepare $install_dir
+  else
+    echo "$install_dir is not empty."
+    exit
+  fi
 fi
 
 cd $install_dir
 
-cat>docker-compose.yml<<EOF
+cat >docker-compose.yml <<EOF
 version: '3'
 
 services:
@@ -59,8 +59,7 @@ services:
     command: redis-server /etc/redis.conf
 EOF
 
-
-cat>etc/redis.conf<<EOF
+cat >etc/redis.conf <<EOF
 # Redis configuration file example.
 
 # ./redis-server /path/to/redis.conf
@@ -222,4 +221,3 @@ rdb-save-incremental-fsync                  yes
 ########################### ACTIVE DEFRAGMENTATION #######################
 # Default.
 EOF
-

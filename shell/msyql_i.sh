@@ -9,94 +9,88 @@ echo "(2) Mysql8"
 echo "(3) Exit"
 echo "----------------------------------"
 
-
 echo -n "Input your choice: "
 read version
 
 case $version in
-    1)
-    echo "You will install mysql5.7 ."
-    ;;
-    2)
-    echo "You will install mysql8 ."
-    ;;
-    3)
-    echo "Exit!"
-    exit
-    ;;
-    *)
-    echo "Bye!"
-    exit
-    ;;
+1)
+  echo "You will install mysql5.7 ."
+  ;;
+2)
+  echo "You will install mysql8 ."
+  ;;
+3)
+  echo "Exit!"
+  exit
+  ;;
+*)
+  echo "Bye!"
+  exit
+  ;;
 esac
 
-echo -n  "Input a folder where you want install in: "
+echo -n "Input a folder where you want install in: "
 read install_dir
 
 if [ ! $install_dir ]; then
-   echo "Your input install dir is empty"
-   exit
+  echo "Your input install dir is empty"
+  exit
 fi
 
-
-function prepare(){
-    cd $1
-    mkdir log conf
-    chown -R 999 log
-    cd -
+function prepare() {
+  cd $1
+  mkdir log conf
+  chown -R 999 log
+  cd -
 }
 
-
-function is_file(){
-    iii=$1
-    if [ -f "$iii" ]; then
-        echo "$iii is a file !!! Can not install !!!"
-        exit
-    fi
+function is_file() {
+  iii=$1
+  if [ -f "$iii" ]; then
+    echo "$iii is a file !!! Can not install !!!"
+    exit
+  fi
 }
-
 
 if [ ! -d "$install_dir" ]; then
-    is_file $install_dir
+  is_file $install_dir
 
-    echo "Install mysql in $install_dir"
-    mkdir -p $install_dir
-    prepare $install_dir
+  echo "Install mysql in $install_dir"
+  mkdir -p $install_dir
+  prepare $install_dir
 elif [ -d "$install_dir" ]; then
 
-    is_file $intall_dir
+  is_file $intall_dir
 
-    if [ "`ls -A $install_dir`" = "" ]; then
-        echo "$install_dir is empty."
-        prepare $install_dir
-    else
-        echo "$install_dir is not empty."
-        exit
-    fi
+  if [ "$(ls -A $install_dir)" = "" ]; then
+    echo "$install_dir is empty."
+    prepare $install_dir
+  else
+    echo "$install_dir is not empty."
+    exit
+  fi
 fi
-
 
 cd $install_dir
 
-
 function init_dbenv() {
-    echo -n "Please input root password :"
-    read root_password
+  echo -n "Please input root password :"
+  read root_password
 
-    if [ ! $root_password ]; then
-        echo "Root password is not setting !!!"
-        echo "Default password is Root@123#"
-        root_password="Root@123#"
-    else
-        echo "Root password is $root_password"
-    fi
+  if [ ! $root_password ]; then
+    echo "Root password is not setting !!!"
+    echo "Default password is Root@123#"
+    root_password="Root@123#"
+  else
+    echo "Root password is $root_password"
+  fi
 
-    echo "MYSQL_ROOT_PASSWORD=$root_password" > db.env
+  echo "MYSQL_ROOT_PASSWORD=$root_password" >db.env
 }
 
 function init_dc() {
 
-cat>docker-compose.yml<<EOF
+  cat >docker-compose.yml <<EOF
 version: "3"
 
 services:
@@ -118,8 +112,8 @@ EOF
 
 }
 
-function mysql_57_cnf(){
-cat>conf/my.cnf<<EOF
+function mysql_57_cnf() {
+  cat >conf/my.cnf <<EOF
 [mysql]
 port                                   = 3307
 socket                                 = /var/run/mysqld/mysqld.sock
@@ -294,9 +288,8 @@ max_allowed_packet                     = 256M
 EOF
 }
 
-
-function mysql_8_cnf(){
-cat>conf/my.cnf<<EOF
+function mysql_8_cnf() {
+  cat >conf/my.cnf <<EOF
 [mysql]
 port                                   = 3306
 socket                                 = /var/run/mysqld/mysqld.sock
@@ -454,20 +447,19 @@ max_allowed_packet                   = 256M
 EOF
 }
 
-
 case $version in
-    1)
-    init_dbenv
-    init_dc  "mysql57" "mysql:5.7" "57"
-    mysql_57_cnf
-    sed -i '/^#/d' conf/my.cnf
-    echo "Mysql5.7's default port is 3307."
-    ;;
-    2)
-    init_dbenv
-    init_dc  "mysql8" "mysql" "8"
-    mysql_8_cnf
-    sed -i '/^#/d' conf/my.cnf
-    echo "Mysql8's default port is 3306."
-    ;;
+1)
+  init_dbenv
+  init_dc "mysql57" "mysql:5.7" "57"
+  mysql_57_cnf
+  sed -i '/^#/d' conf/my.cnf
+  echo "Mysql5.7's default port is 3307."
+  ;;
+2)
+  init_dbenv
+  init_dc "mysql8" "mysql" "8"
+  mysql_8_cnf
+  sed -i '/^#/d' conf/my.cnf
+  echo "Mysql8's default port is 3306."
+  ;;
 esac

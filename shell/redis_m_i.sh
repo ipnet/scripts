@@ -1,85 +1,84 @@
 #!/bin/bash
 echo "This shell will install redis master and redis sentinel"
-echo -n  "Input a folder where you want install redis: "
+echo -n "Input a folder where you want install redis: "
 read redis_install_dir
 
-echo -n  "Input a folder where you want install sentinel: "
+echo -n "Input a folder where you want install sentinel: "
 read sentinel_install_dir
 
 if [ ! $redis_install_dir ]; then
-   echo "Your input install dir is empty"
-   exit
+  echo "Your input install dir is empty"
+  exit
 fi
 
 if [ ! $sentinel_install_dir ]; then
-   echo "Your input install dir is empty"
-   exit
+  echo "Your input install dir is empty"
+  exit
 fi
 
-
-function is_file(){
-    install_dir=$1
-    if [ -f "$install_dir" ]; then
-        echo "$install_dir is a file !!! Can not install !!!"
-        exit
-    fi
+function is_file() {
+  install_dir=$1
+  if [ -f "$install_dir" ]; then
+    echo "$install_dir is a file !!! Can not install !!!"
+    exit
+  fi
 }
 
 # setting requirepass
-echo -n  "Input require pass: "
+echo -n "Input require pass: "
 read requirepass
 
 if [ ! $requirepass ]; then
-    echo "requirepass is not setting !!!"
-    echo "Default requirepass is 123456"
-    requirepass="123456"
+  echo "requirepass is not setting !!!"
+  echo "Default requirepass is 123456"
+  requirepass="123456"
 else
-    echo "requirepass is $requirepass"
+  echo "requirepass is $requirepass"
 fi
 
 # setting masterauth
-echo -n  "Input master auth: "
+echo -n "Input master auth: "
 read masterauth
 if [ ! $masterauth ]; then
-    echo "masterauth is not setting !!!"
-    echo "Default masterauth is 123456"
-    masterauth="123456"
+  echo "masterauth is not setting !!!"
+  echo "Default masterauth is 123456"
+  masterauth="123456"
 else
-    echo "masterauth is $masterauth"
+  echo "masterauth is $masterauth"
 fi
 
 echo "default redis port is 6379 !!!"
 echo "default sentinel port is 26379 !!!"
 
 # install master
-function prepare_redis(){
-    cd $1
-    mkdir etc data log
-    chown -R 999 log data
-    cd -
+function prepare_redis() {
+  cd $1
+  mkdir etc data log
+  chown -R 999 log data
+  cd -
 }
 
 if [ ! -d "$redis_install_dir" ]; then
-    is_file $redis_install_dir
+  is_file $redis_install_dir
 
-    echo "Install redis mater in $redis_install_dir"
-    mkdir -p $redis_install_dir
-    prepare_redis $redis_install_dir
+  echo "Install redis mater in $redis_install_dir"
+  mkdir -p $redis_install_dir
+  prepare_redis $redis_install_dir
 elif [ -d "$redis_install_dir" ]; then
-    is_file $redis_install_dir
+  is_file $redis_install_dir
 
-    if [ "`ls -A $redis_install_dir`" = "" ]; then
-        echo "$redis_install_dir is empty."
-        prepare_redis $redis_install_dir
-    else
-        echo "$redis_install_dir is not empty."
-        exit
-    fi
+  if [ "$(ls -A $redis_install_dir)" = "" ]; then
+    echo "$redis_install_dir is empty."
+    prepare_redis $redis_install_dir
+  else
+    echo "$redis_install_dir is not empty."
+    exit
+  fi
 fi
 
 cd $redis_install_dir
 
-cat>docker-compose.yml<<EOF
+cat >docker-compose.yml <<EOF
 version: '3'
 
 services:
@@ -96,7 +95,7 @@ services:
     command: redis-server /etc/redis.conf
 EOF
 
-cat>etc/redis.conf<<EOF
+cat >etc/redis.conf <<EOF
 # Redis configuration file example.
 
 # ./redis-server /path/to/redis.conf
@@ -264,44 +263,44 @@ EOF
 cd -
 
 # install sentinel
-function prepare_sentinel(){
-    cd $1
-    mkdir conf log
-    chown -R 999 log
-    cd -
+function prepare_sentinel() {
+  cd $1
+  mkdir conf log
+  chown -R 999 log
+  cd -
 }
 
 if [ ! -d "$sentinel_install_dir" ]; then
-    is_file $sentinel_install_dir
+  is_file $sentinel_install_dir
 
-    echo "Install redis sentinel in $sentinel_install_dir"
-    mkdir -p $sentinel_install_dir
-    prepare_sentinel $sentinel_install_dir
+  echo "Install redis sentinel in $sentinel_install_dir"
+  mkdir -p $sentinel_install_dir
+  prepare_sentinel $sentinel_install_dir
 elif [ -d "$sentinel_install_dir" ]; then
-    is_file $sentinel_install_dir
+  is_file $sentinel_install_dir
 
-    if [ "`ls -A $sentinel_install_dir`" = "" ]; then
-        echo "$sentinel_install_dir is empty."
-        prepare_sentinel $sentinel_install_dir
-    else
-        echo "$sentinel_install_dir is not empty."
-        exit
-    fi
+  if [ "$(ls -A $sentinel_install_dir)" = "" ]; then
+    echo "$sentinel_install_dir is empty."
+    prepare_sentinel $sentinel_install_dir
+  else
+    echo "$sentinel_install_dir is not empty."
+    exit
+  fi
 fi
 
 cd $sentinel_install_dir
 
-echo -n  "Input redis master ip address: "
+echo -n "Input redis master ip address: "
 read masterip
 
 if [ ! $masterip ]; then
-   echo "Your input master ip is empty. Default master ip is 127.0.0.1"
-   masterip="127.0.0.1"
+  echo "Your input master ip is empty. Default master ip is 127.0.0.1"
+  masterip="127.0.0.1"
 else
   echo "Your input master ip is $masterip"
 fi
 
-cat>docker-compose.yml<<EOF
+cat >docker-compose.yml <<EOF
 version: '3'
 
 services:
@@ -317,7 +316,7 @@ services:
     command: redis-sentinel /etc/redis-sentinel/sentinel.conf
 EOF
 
-cat>conf/sentinel.conf<<EOF
+cat >conf/sentinel.conf <<EOF
 port 26379
 
 daemonize no
