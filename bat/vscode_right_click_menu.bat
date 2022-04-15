@@ -43,7 +43,7 @@ reg delete HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f
 
 reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /ve /d "Open folder as Workspace"
 
-reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /v "Icon" /t REG_EXPAND_SZ /d """"C:\Program Files\Microsoft VS Code\Code.exe""""
+reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /v "Icon" /t REG_EXPAND_SZ /d "\"C:\Program Files\Microsoft VS Code\Code.exe\"
 
 reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\Command /f /ve /d "\"C:\Program Files\Microsoft VS Code\Code.exe\" "\"%%V\""
 
@@ -52,8 +52,8 @@ reg delete HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode /f
 
 reg add HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode /f
 
-reg add HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode /f /v "Icon" /t REG_EXPAND_SZ /d """"C:\Program Files\Microsoft VS Code\Code.exe""""
+reg add HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode /f /v "Icon" /t REG_EXPAND_SZ /d "\"C:\Program Files\Microsoft VS Code\Code.exe\"
 
-reg add HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode\command /f /ve /d "C:\Program Files\Microsoft VS Code\Code.exe "\"%%1\""
+reg add HKEY_CLASSES_ROOT\*\shell\Open" "with" "VSCode\command /f /ve /d "\"C:\Program Files\Microsoft VS Code\Code.exe\" "\"%%1\""
 
 pause
