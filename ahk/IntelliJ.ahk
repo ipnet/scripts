@@ -317,6 +317,11 @@ capslock & F12::
 Send {Volume_UP}
 return
 
+; F1
+capslock & 1::
+Send {F1}
+return
+
 ; F5
 >!Enter::
 Send {F5}
