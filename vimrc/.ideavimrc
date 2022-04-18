@@ -35,7 +35,6 @@ sethandler <C-Y> a:ide
 sethandler <C-[> a:ide
 sethandler <C-]> a:ide
 
-
 " """""""""""""""""""" basic start """"""""""""""""""""
 " set leader key
 nnoremap <SPACE> <Nop>
@@ -196,7 +195,6 @@ nnoremap gu :action GotoSuperMethod<CR>
 
 " Go to declaration
 nnoremap gd :action GotoDeclaration<CR>
-nnoremap gl :action GotoDeclaration<CR>
 
 " EditorCompleteStatement ctrl + shift + enter
 nnoremap <Leader>k :action EditorCompleteStatement<CR>
@@ -233,8 +231,15 @@ nnoremap <Leader>e :action GotoNextError<CR>
 nnoremap U :action $Redo<cr>
 
 " plugin AceJump
-nnoremap <Leader>j :action AceAction<CR>
-nnoremap gj :action AceAction<CR>
+# nnoremap <Leader>j :action AceAction<CR>
+# nnoremap gj :action AceAction<CR>
+
+" Press `f` to activate AceJump
+map f :action AceAction<CR>
+" Press `F` to activate Target Mode
+map F :action AceTargetAction<CR>
+" Press `g` to activate Line Mode
+" map gl :action AceLineAction<CR>
 
 " debug and run
 nnoremap <space>b :action ToggleLineBreakpoint<cr>
