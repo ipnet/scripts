@@ -54,6 +54,7 @@ echo last version is %idea_version%
 
 echo add right key
 
+:: background
 reg delete HKEY_CLASSES_ROOT\Directory\Background\shell\idea /f
 
 reg add HKEY_CLASSES_ROOT\Directory\Background\shell\idea /f /ve /d "Open folder as Project"
@@ -62,6 +63,13 @@ reg add HKEY_CLASSES_ROOT\Directory\Background\shell\idea /f /v "Icon" /t REG_EX
 
 reg add HKEY_CLASSES_ROOT\Directory\Background\shell\idea\Command /f /ve /d "\"%path_of_folder%\%idea_version%\bin\idea64.exe\" "\"%%V\""
 
-taskkill /f /im explorer.exe & start explorer.exe
+:: right click folder
+reg delete HKEY_CLASSES_ROOT\Directory\shell\idea /f
+
+reg add HKEY_CLASSES_ROOT\Directory\shell\idea /f /ve /d "Open folder as Project"
+
+reg add HKEY_CLASSES_ROOT\Directory\shell\idea /f /v "Icon" /t REG_EXPAND_SZ /d """"%path_of_folder%\%idea_version%\bin\idea64.exe""""
+
+reg add HKEY_CLASSES_ROOT\Directory\shell\idea\Command /f /ve /d "\"%path_of_folder%\%idea_version%\bin\idea64.exe\" "\"%%V\""
 
 pause
