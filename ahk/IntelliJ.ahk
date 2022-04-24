@@ -61,6 +61,14 @@ else
     Run,C:\shortcut\datagrip.lnk
     return
 
+capslock & g::
+if WinExist("ahk_exe GithubDesktop.exe")
+    WinActivate,ahk_exe GithubDesktop.exe
+else
+    Run,C:\shortcut\GithubDesktop.lnk
+    return
+
+
 capslock & z::
 if WinExist("ahk_exe Code.exe")
     WinActivate,ahk_exe Code.exe
