@@ -261,12 +261,12 @@ capslock & b::
 Send ^{Left}
 return
 
-capslock & ,::
-Send {PgUp}
-return
+;capslock & ,::
+;Send {PgUp}
+;return
 
 capslock & .::
-Send {PgDn}
+Send {RButton}
 return
 
 capslock & p::
