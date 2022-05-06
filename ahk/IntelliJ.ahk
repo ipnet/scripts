@@ -62,10 +62,10 @@ else
     return
 
 capslock & g::
-if WinExist("ahk_exe Sourcetree.exe")
-    WinActivate,ahk_exe Sourcetree.exe
+if WinExist("ahk_exe GithubDesktop.exe")
+    WinActivate,ahk_exe GithubDesktop.exe
 else
-    Run,C:\shortcut\Sourcetree.lnk
+    Run,C:\shortcut\GithubDesktop.lnk
     return
 
 capslock & z::
