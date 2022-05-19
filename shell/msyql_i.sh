@@ -147,8 +147,8 @@ thread_stack                           = 256K
 thread_cache_size                      = 128
 
 # time_out need setting
-interactive_timeout                    = 3600
-wait_timeout                           = 3600
+interactive_timeout                    = 86400
+wait_timeout                           = 86400
 
 # password
 default_authentication_plugin          = mysql_native_password
@@ -331,8 +331,8 @@ thread_stack                           = 256K
 thread_cache_size                      = 128
 
 # time_out need setting
-interactive_timeout                    = 3600
-wait_timeout                           = 3600
+interactive_timeout                    = 86400
+wait_timeout                           = 86400
 
 # password
 default_authentication_plugin          = mysql_native_password
