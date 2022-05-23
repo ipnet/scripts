@@ -484,7 +484,7 @@ else {
         Send ``update_time`` datetime not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment 'update_time'`,`n
         Send primary key (``id``)
         Send {Home}{Down 2}{END}
-        Send engine = InnoDB ROW_FORMAT = DYNAMIC comment = '%TableComment%'`;
+        Send engine = InnoDB ROW_FORMAT = DYNAMIC CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci comment = '%TableComment%'`;
     }
 }
 return
