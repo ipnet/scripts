@@ -54,6 +54,13 @@ else
     Run,C:\shortcut\idea.lnk
     return
 
+capslock & i::
+if WinExist("ahk_exe idea64.exe")
+    WinActivate,ahk_exe idea64.exe
+else
+    Run,C:\shortcut\idea.lnk
+    return
+
 capslock & d::
 if WinExist("ahk_exe datagrip64.exe")
     WinActivate,ahk_exe datagrip64.exe
