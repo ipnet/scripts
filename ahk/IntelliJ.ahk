@@ -488,8 +488,8 @@ else {
         Send drop table if exists %TableName%`;`n`n
         Send create table %TableName%`(`){LEFT}`n`n{UP}
         Send ``id``  bigint(20) unsigned not null auto_increment comment 'id',`n`n
-        Send ``create_time`` datetime not null DEFAULT CURRENT_TIMESTAMP comment 'create_time',`n
-        Send ``update_time`` datetime not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment 'update_time'`,`n
+        Send ``create_time`` datetime not null DEFAULT now() comment 'create_time',`n
+        Send ``update_time`` datetime not null DEFAULT now() ON UPDATE now() comment 'update_time'`,`n
         Send primary key (``id``)
         Send {Home}{Down 2}{END}
         Send engine = InnoDB ROW_FORMAT = DYNAMIC CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci comment = '%TableComment%'`;
