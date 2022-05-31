@@ -33,12 +33,12 @@ else
     Run,C:\Program Files\Google\Chrome\Application\chrome.exe
     return
 
-capslock & t::
-if WinExist("ahk_exe ConEmu64.exe")
-    WinActivate,ahk_exe ConEmu64.exe
-else
-    Run,C:\shortcut\cmder.lnk
-    return
+;capslock & t::
+;if WinExist("ahk_exe ConEmu64.exe")
+;    WinActivate,ahk_exe ConEmu64.exe
+;else
+;    Run,C:\shortcut\cmder.lnk
+;    return
 
 ; YoudaoNote.exe ydnote.lnk
 capslock & y::
@@ -76,11 +76,19 @@ else
     Run,C:\shortcut\GithubDesktop.lnk
     return
 
-capslock & z::
+capslock & x::
 if WinExist("ahk_exe Code.exe")
     WinActivate,ahk_exe Code.exe
 else
     Run,C:\shortcut\vscode.lnk
+    return
+
+
+capslock & 2::
+if WinExist("ahk_exe notepad++.exe")
+    WinActivate,ahk_exe notepad++.exe
+else
+    Run,C:\shortcut\notepad++.lnk
     return
 
 capslock & 3::
@@ -90,12 +98,6 @@ else
     Run,C:\shortcut\navicat.lnk
     return
 
-capslock & 2::
-if WinExist("ahk_exe notepad++.exe")
-    WinActivate,ahk_exe notepad++.exe
-else
-    Run,C:\shortcut\notepad++.lnk
-    return
 
 capslock & 4::
 if WinExist("ahk_exe Postman.exe")
@@ -105,7 +107,7 @@ else
     return
 
 
-capslock & x::
+capslock & t::
 if WinExist("ahk_exe MobaXterm.exe")
     WinActivate,ahk_exe MobaXterm.exe
 else
