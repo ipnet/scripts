@@ -40,7 +40,7 @@ else
 ;    Run,C:\shortcut\cmder.lnk
 ;    return
 
-; YoudaoNote.exe ydnote.lnk
+; YoudaoNote.exe ydnote.lnk\
 capslock & y::
 if WinExist("ahk_exe Notion.exe")
     WinActivate,ahk_exe Notion.exe
