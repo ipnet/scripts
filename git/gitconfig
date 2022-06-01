@@ -1,0 +1,76 @@
+[user]
+name = zhuzhenjie
+email = mimotronik@gmail.com
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+[http "https://github.com"]
+proxy = socks5://127.0.0.1:10808
+[https "https://github.com"]
+proxy = socks5://127.0.0.1:10808
+[credential]
+helper = store
+[credential "https://gitee.com"]
+provider = generic
+[credential "https://code.eblssmart.com"]
+provider = generic
+[credential "https://gogs.ipcrystal.com"]
+provider = generic
+[credential "https://code.ipcrystal.com"]
+provider = generic
+[core]
+autocrlf = true
+[difftool "sourcetree"]
+cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+cmd = "'' "
+trustExitCode = true
+[alias]
+#
+br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+# 切换分支
+ch=checkout
+
+# 检出本地分支
+chb=checkout -b
+
+# 删除本地分支
+db = branch -D
+
+# 删除远程分支
+dbr = push origin --delete
+
+## init -> addurl
+# 添加远程地址
+addurl = !git remote add origin
+
+# 修改远程地址
+seturl = !git remote set-url origin
+
+## copy -> seturl
+# 复制到新仓库
+copy = !git push --mirror
+
+# 拉当前分支代码
+pl=!git pull origin HEAD
+
+# 推送到当前分支
+ps=!git push origin HEAD
+done=!git push origin HEAD
+
+# 提交到本地
+cm = !git add -A && git commit -m
+save = !git add -A && git commit -m
+
+# 强制回滚
+back = !git reset --hard
+backs = !git reset --soft
+backm= !git reset --mixed
+
+# 查看日志
+logs = !git log --color --stat --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d %Cgreen(%cd) %Cgreen(%cr) %C(bold blue)<%an>%n%C(bold red)%f%n%n%C(bold red)%b%Creset' --abbrev-commit --graph
+
+# 查看文件状态
+st=status
