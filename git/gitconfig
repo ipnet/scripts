@@ -43,6 +43,9 @@ db = branch -D
 dbr = push origin --delete
 
 ## init -> addurl
+# 获取远程地址
+geturl = !git remote -v
+
 # 添加远程地址
 addurl = !git remote add origin
 
