@@ -1,0 +1,1 @@
+copy /y gitconfig %USERPROFILE%\.gitconfig
