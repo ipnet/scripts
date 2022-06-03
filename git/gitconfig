@@ -57,7 +57,7 @@ seturl = !git remote set-url origin
 copy = !git push --mirror
 
 # 拉当前分支代码
-pl=!git pull origin HEAD
+pl=!git pull --rebase origin HEAD
 
 # 推送到当前分支
 ps=!git push origin HEAD
