@@ -6,6 +6,8 @@ mv git-2.36.1.zip /usr/local
 
 cd /usr/local
 
+yum group install -y "Development Tools"
+
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel unzip
 
 yum remove -y git
