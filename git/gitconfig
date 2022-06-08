@@ -28,8 +28,11 @@ cmd = '' \"$LOCAL\" \"$REMOTE\"
 cmd = "'' "
 trustExitCode = true
 [alias]
-#
-br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+b = branch
+# 关联远程分支和本地分支
+# git branch --set-upstream-to=origin/develop develop
+bvv = branch -vv
+br =!git branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate && git branch -vv --sort=-committerdate
 # 切换分支
 ch=checkout
 
@@ -76,7 +79,7 @@ backm= !git reset --mixed
 st=status
 
 # 查看日志 from lg2 --stat
-logs = log --graph --abbrev-commit --decorate --date=format:'%Y/%m/%d %H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%cd%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+lg = log --graph --abbrev-commit --decorate --date=format:'%Y/%m/%d %H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%cd%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 
 # logs = !git log --color --stat --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d %Cgreen(%cd) %Cgreen(%cr) %C(bold blue)<%an>%n%C(bold red)%f%n%n%C(bold red)%b%Creset' --abbrev-commit --graph
 
