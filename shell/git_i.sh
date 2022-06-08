@@ -1,4 +1,5 @@
 #!/bin/bash
+yum install wget unzip -y
 
 wget https://dl.ipcrystal.com/git/git-2.36.1.zip
 
