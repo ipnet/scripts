@@ -16,7 +16,7 @@ mv jdk-8u291-linux-x64.tar.gz /usr/local
 tar zxvf jdk-8u291-linux-x64.tar.gz
 
 rm -rf jdk
-mv jdk1.8.0_291 jdk
+mv jdk1.8.0_291/ jdk
 
 echo "install maven"
 cd
@@ -26,11 +26,11 @@ mv apache-maven-3.6.3-bin.zip /usr/local
 unzip apache-maven-3.6.3-bin.zip
 
 rm -rf maven
-mv apache-maven-3.6.3 maven
+mv apache-maven-3.6.3/ maven
 
 echo "export JAVA_HOME=/usr/local/jdk" >>/etc/profile
 echo "export M2_HOME=/usr/local/maven" >>/etc/profile
-echo "export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$M2_HOME/bin"
+echo "export PATH=\$PATH:\$JAVA_HOME/bin:\$JAVA_HOME/jre/bin:\$M2_HOME/bin" >>/etc/profile
 
 echo "maven ali setting.xml"
 
