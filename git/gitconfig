@@ -45,6 +45,8 @@ rmb = branch -D
 # 删除远程分支
 rmrb = push origin --delete
 
+rb = rebase
+
 ## init -> addurl
 # 获取远程地址
 geturl = !git remote -v
