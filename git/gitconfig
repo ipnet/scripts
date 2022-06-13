@@ -82,7 +82,7 @@ backm= !git reset --mixed
 st=status
 
 # 查看日志 from lg2 --stat
-logs = log --graph --abbrev-commit --decorate --date=format:'%Y/%m/%d %H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%cd%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+logs = log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%cd%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 
 # logs = !git log --color --stat --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%C(cyan)%h%Creset -%C(yellow)%d %Cgreen(%cd) %Cgreen(%cr) %C(bold blue)<%an>%n%C(bold red)%f%n%n%C(bold red)%b%Creset' --abbrev-commit --graph
 
