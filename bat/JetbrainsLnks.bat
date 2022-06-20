@@ -5,7 +5,7 @@ setlocal EnableDelayedExpansion
 
 set shortcut_folder=C:\shortcut\
 
-for %%t in (idea,datagrip) do (
+for %%t in (idea,datagrip,goland) do (
 
     :: 删除工具原有的快捷方式
     del /f /q "C:\shortcut\%%t.lnk"

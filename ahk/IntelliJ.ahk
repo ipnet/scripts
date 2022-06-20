@@ -70,10 +70,10 @@ else
     return
 
 capslock & g::
-if WinExist("ahk_exe GithubDesktop.exe")
-    WinActivate,ahk_exe GithubDesktop.exe
+if WinExist("ahk_exe goland64.exe")
+    WinActivate,ahk_exe goland64.exe
 else
-    Run,C:\shortcut\GithubDesktop.lnk
+    Run,C:\shortcut\goland.lnk
     return
 
 capslock & x::
