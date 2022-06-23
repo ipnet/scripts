@@ -1,3 +1,3 @@
 # scripts
 
-ahk vimrc shell
+Make life better!
