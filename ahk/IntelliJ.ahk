@@ -99,7 +99,7 @@ else
 
 ;;; motion
 
-CapsLock::Send, {Capslock}
+CapsLock::return
 
 ;  ^ - Ctrl ,  + - Shift ; ! - Alt
 CapsLock & h::
