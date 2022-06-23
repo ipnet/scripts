@@ -260,14 +260,14 @@ else {
 
 ; emacs
 capslock & a::
-if GetKeyState("Ctrl", "D")
+if GetKeyState("Alt")
     Send ^{Home}
 else
     send {Home}
 return
 
 capslock & e::
-if GetKeyState("Ctrl", "D")
+if GetKeyState("Alt", "D")
     Send ^{End}
 else
     send {End}
