@@ -41,7 +41,7 @@ echo add right key
 :: open folder background
 reg delete HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f
 
-reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /ve /d "Open folder as Workspace"
+reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /ve /d "Open with VSCode"
 
 reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode /f /v "Icon" /t REG_EXPAND_SZ /d "\"C:\Program Files\Microsoft VS Code\Code.exe\"
 
@@ -51,7 +51,8 @@ reg add HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command /f /ve /d "\
 :: open folder shell
 reg delete HKEY_CLASSES_ROOT\Directory\shell\VSCode /f
 
-reg add HKEY_CLASSES_ROOT\Directory\shell\VSCode /f /ve /d "Open folder as Workspace"
+:: Open folder as Workspace
+reg add HKEY_CLASSES_ROOT\Directory\shell\VSCode /f /ve /d "Open with VSCode"
 
 reg add HKEY_CLASSES_ROOT\Directory\shell\VSCode /f /v "Icon" /t REG_EXPAND_SZ /d "\"C:\Program Files\Microsoft VS Code\Code.exe\"
 

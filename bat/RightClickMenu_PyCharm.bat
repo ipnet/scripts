@@ -28,7 +28,7 @@ if '%errorlevel%' NEQ '0' (
 
 echo Detect Idea Last Version
 
-set path_of_folder=%localappdata%\JetBrains\Toolbox\apps\IDEA-U\ch-0
+set path_of_folder=%localappdata%\JetBrains\Toolbox\apps\PyCharm-P\ch-0
 set idea_version=000
 
 set toolbox_dir_reg="^[0-9]*.[0-9]*.[0-9]*$"
@@ -55,21 +55,22 @@ echo last version is %idea_version%
 echo add right key
 
 :: background
-reg delete HKEY_CLASSES_ROOT\Directory\Background\shell\idea /f
+reg delete HKEY_CLASSES_ROOT\Directory\Background\shell\pycharm /f
 
-reg add HKEY_CLASSES_ROOT\Directory\Background\shell\idea /f /ve /d "Open folder as Project"
+:: Open folder as Project
+reg add HKEY_CLASSES_ROOT\Directory\Background\shell\pycharm /f /ve /d "Open with PyCharm"
 
-reg add HKEY_CLASSES_ROOT\Directory\Background\shell\idea /f /v "Icon" /t REG_EXPAND_SZ /d """"%path_of_folder%\%idea_version%\bin\idea64.exe""""
+reg add HKEY_CLASSES_ROOT\Directory\Background\shell\pycharm /f /v "Icon" /t REG_EXPAND_SZ /d """"%path_of_folder%\%idea_version%\bin\pycharm64.exe""""
 
-reg add HKEY_CLASSES_ROOT\Directory\Background\shell\idea\Command /f /ve /d "\"%path_of_folder%\%idea_version%\bin\idea64.exe\" "\"%%V\""
+reg add HKEY_CLASSES_ROOT\Directory\Background\shell\pycharm\Command /f /ve /d "\"%path_of_folder%\%idea_version%\bin\pycharm64.exe\" "\"%%V\""
 
 :: right click folder
-reg delete HKEY_CLASSES_ROOT\Directory\shell\idea /f
+reg delete HKEY_CLASSES_ROOT\Directory\shell\pycharm /f
 
-reg add HKEY_CLASSES_ROOT\Directory\shell\idea /f /ve /d "Open folder as Project"
+reg add HKEY_CLASSES_ROOT\Directory\shell\pycharm /f /ve /d "Open with PyCharm"
 
-reg add HKEY_CLASSES_ROOT\Directory\shell\idea /f /v "Icon" /t REG_EXPAND_SZ /d """"%path_of_folder%\%idea_version%\bin\idea64.exe""""
+reg add HKEY_CLASSES_ROOT\Directory\shell\pycharm /f /v "Icon" /t REG_EXPAND_SZ /d """"%path_of_folder%\%idea_version%\bin\pycharm64.exe""""
 
-reg add HKEY_CLASSES_ROOT\Directory\shell\idea\Command /f /ve /d "\"%path_of_folder%\%idea_version%\bin\idea64.exe\" "\"%%V\""
+reg add HKEY_CLASSES_ROOT\Directory\shell\pycharm\Command /f /ve /d "\"%path_of_folder%\%idea_version%\bin\pycharm64.exe\" "\"%%V\""
 
 pause
