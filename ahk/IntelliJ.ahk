@@ -1,20 +1,4 @@
-﻿;;; ==========================================
-;;; Author  : ipcrystal
-;;; Email   : mimotronik@gmail.com
-;;; Desc    : Windows Expand AutoHotkey Script
-;;; ==========================================
-;;;    #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-;;;    ; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-;;;    SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-
-;管理员运行
-;if not A_IsAdmin
-;{
-;   Run *RunAs "%A_ScriptFullPath%"
-;   ExitApp
-;}
-
+﻿
 SetCapsLockState,AlwaysOff
 SetStoreCapslockMode,Off
 
@@ -22,7 +6,7 @@ SetStoreCapslockMode,Off
 Process Priority,,High
 
 ; Reload Ahk Script
-CapsLock &  \::Reload
+CapsLock & \::Reload
 
 ;;; windows 快捷打开常用软件
 
@@ -115,14 +99,24 @@ else
     return
 
 ;;; motion
+
+;=====================================================================o
+;                         CapsLock Escaper:                          ;|
+;----------------------------------o----------------------------------o
+;                        CapsLock  |  {ESC}                          ;|
+;----------------------------------o----------------------------------o
+CapsLock::Send, {ESC}                                                ;|
+;---------------------------------------------------------------------o
+
+;  ^ - Ctrl ,  + - Shift ; ! - Alt
 CapsLock & h::
-if GetKeyState("Shift", "D") {
-    if GetKeyState("Alt", "D") {
-        Send +!{Left}
+if GetKeyState("Shift") {
+    if GetKeyState("Alt") {
+        Send ^+{Left}
         return
     }
-    else if GetKeyState("Ctrl", "D") {
-        Send ^+{Left}
+    else if GetKeyState("Ctrl") {
+        Send !+{Left}
         return
     }
     else {
@@ -130,18 +124,21 @@ if GetKeyState("Shift", "D") {
         return
     }
 }
-else if GetKeyState("Ctrl", "D") {
-    if (GetKeyState("Alt", "D")) {
+else if GetKeyState("Ctrl") {
+    if (GetKeyState("Alt")) {
+        ; ctrl + alt + Left
         Send ^!{Left}
         return
     }
     else {
-        Send ^{Left}
+        ; alt + Left
+        Send !{Left}
         return
     }
 }
-else if GetKeyState("Alt", "D"){
-    Send !{Left}
+else if GetKeyState("Alt"){
+    ; ctrl + Left
+    Send ^{Left}
     return
 }
 else {
@@ -150,13 +147,13 @@ else {
 }
 
 CapsLock & j::
-if GetKeyState("Shift", "D") {
-    if GetKeyState("Alt", "D") {
-        Send +!{Down}
+if GetKeyState("Shift") {
+    if GetKeyState("Alt") {
+        Send ^+{Down}
         return
     }
-    else if GetKeyState("Ctrl", "D") {
-        Send ^+{Down}
+    else if GetKeyState("Ctrl") {
+        Send !+{Down}
         return
     }
     else {
@@ -164,18 +161,21 @@ if GetKeyState("Shift", "D") {
         return
     }
 }
-else if GetKeyState("Ctrl", "D") {
-    if (GetKeyState("Alt", "D")) {
+else if GetKeyState("Ctrl") {
+    if (GetKeyState("Alt")) {
+        ; ctrl + alt + Down
         Send ^!{Down}
         return
     }
     else {
-        Send ^{Down}
+        ; alt + Down
+        Send !{Down}
         return
     }
 }
-else if GetKeyState("Alt", "D"){
-    Send !{Down}
+else if GetKeyState("Alt"){
+    ; ctrl + Down
+    Send ^{Down}
     return
 }
 else {
@@ -183,14 +183,15 @@ else {
     return
 }
 
+
 CapsLock & k::
-if GetKeyState("Shift", "D") {
-    if GetKeyState("Alt", "D") {
-        Send +!{Up}
+if GetKeyState("Shift") {
+    if GetKeyState("Alt") {
+        Send ^+{Up}
         return
     }
-    else if GetKeyState("Ctrl", "D") {
-        Send ^+{Up}
+    else if GetKeyState("Ctrl") {
+        Send !+{Up}
         return
     }
     else {
@@ -198,18 +199,21 @@ if GetKeyState("Shift", "D") {
         return
     }
 }
-else if GetKeyState("Ctrl", "D") {
-    if (GetKeyState("Alt", "D")) {
+else if GetKeyState("Ctrl") {
+    if (GetKeyState("Alt")) {
+        ; ctrl + alt + Up
         Send ^!{Up}
         return
     }
     else {
-        Send ^{Up}
+        ; alt + Up
+        Send !{Up}
         return
     }
 }
-else if GetKeyState("Alt", "D"){
-    Send !{Up}
+else if GetKeyState("Alt"){
+    ; ctrl + Up
+    Send ^{Up}
     return
 }
 else {
@@ -218,13 +222,13 @@ else {
 }
 
 CapsLock & l::
-if GetKeyState("Shift", "D") {
-    if GetKeyState("Alt", "D") {
-        Send +!{Right}
+if GetKeyState("Shift") {
+    if GetKeyState("Alt") {
+        Send ^+{Right}
         return
     }
-    else if GetKeyState("Ctrl", "D") {
-        Send ^+{Right}
+    else if GetKeyState("Ctrl") {
+        Send !+{Right}
         return
     }
     else {
@@ -232,18 +236,21 @@ if GetKeyState("Shift", "D") {
         return
     }
 }
-else if GetKeyState("Ctrl", "D") {
-    if (GetKeyState("Alt", "D")) {
+else if GetKeyState("Ctrl") {
+    if (GetKeyState("Alt")) {
+        ; ctrl + alt + Right
         Send ^!{Right}
         return
     }
     else {
-        Send ^{Right}
+        ; alt + Right
+        Send !{Right}
         return
     }
 }
-else if GetKeyState("Alt", "D"){
-    Send !{Right}
+else if GetKeyState("Alt"){
+    ; ctrl + Right
+    Send ^{Right}
     return
 }
 else {
