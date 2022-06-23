@@ -90,7 +90,6 @@ else
     Run,C:\shortcut\postman.lnk
     return
 
-
 capslock & t::
 if WinExist("ahk_exe MobaXterm.exe")
     WinActivate,ahk_exe MobaXterm.exe
@@ -105,7 +104,7 @@ else
 ;----------------------------------o----------------------------------o
 ;                        CapsLock  |  {ESC}                          ;|
 ;----------------------------------o----------------------------------o
-CapsLock::Send, {ESC}                                                ;|
+; CapsLock::Send, {ESC}                                                ;|
 ;---------------------------------------------------------------------o
 
 ;  ^ - Ctrl ,  + - Shift ; ! - Alt
