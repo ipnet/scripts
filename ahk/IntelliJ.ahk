@@ -69,18 +69,22 @@ else
 
 
 capslock & 2::
+Send {F2}
+return
+
+capslock & 3::
 if WinExist("ahk_exe notepad++.exe")
     WinActivate,ahk_exe notepad++.exe
 else
     Run,C:\shortcut\notepad++.lnk
     return
 
-capslock & 3::
-if WinExist("ahk_exe navicat.exe")
-    WinActivate,ahk_exe navicat.exe
-else
-    Run,C:\shortcut\navicat.lnk
-    return
+;capslock & 3::
+;if WinExist("ahk_exe navicat.exe")
+;    WinActivate,ahk_exe navicat.exe
+;else
+;    Run,C:\shortcut\navicat.lnk
+;    return
 
 
 capslock & 4::
