@@ -39,6 +39,9 @@ ch=checkout
 # 检出本地分支
 chb=checkout -b
 
+# cls
+cls = !git checkout . && git clean -xdf
+
 # 删除本地分支
 rmb = branch -D
 
