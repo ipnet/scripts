@@ -103,7 +103,7 @@ else
 
 ;;; motion
 
-CapsLock::return
+;CapsLock::return
 
 ;  ^ - Ctrl ,  + - Shift ; ! - Alt
 CapsLock & h::
