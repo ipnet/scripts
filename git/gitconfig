@@ -1,6 +1,6 @@
 [user]
 name = zhuzhenjie
-email = mimotronik@gmail.com
+email = zhuzj94@gmail.com
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
@@ -10,6 +10,21 @@ required = true
 proxy = socks5://127.0.0.1:10808
 [https "https://github.com"]
 proxy = socks5://127.0.0.1:10808
+[http]
+postbuffer = 5m
+[core]
+autocrlf = true
+packedGitLimit = 128m
+packedGitWindowSize = 128m
+
+[pack]
+deltaCacheSize = 128m
+packSizeLimit = 128m
+windowMemory = 128m
+
+[http]
+postbuffer = 5m
+
 [credential]
 helper = store
 [credential "https://gitee.com"]
@@ -20,8 +35,7 @@ provider = generic
 provider = generic
 [credential "https://code.ipcrystal.com"]
 provider = generic
-[core]
-autocrlf = true
+
 [difftool "sourcetree"]
 cmd = '' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
