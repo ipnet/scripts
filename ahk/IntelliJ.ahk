@@ -270,6 +270,10 @@ else
     send {End}
 return
 
+capslock & '::
+Send ```
+return
+
 capslock & b::
 Send ^{Left}
 return
@@ -402,23 +406,14 @@ return
 
 ;;; sql comments
 ::sqlcmt::
-Send -- ----------------------------`n
-Send -- `n
-Send -- ----------------------------`n
+Send {Raw}-- ----------------------------`n
+Send {Raw}-- `n
+Send {Raw}-- ----------------------------`n
 Send {UP 2}{END}
 return
 
-::githubclone::
-Send git clone https://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@github.com/ipcrystal/
-return
-
-::gitckclean::
-Send git checkout . && git clean -xdf
-return
-
-
-::myjdbcurl::
-Send jdbc:mysql://localhost:3306/mysql?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=Asia/Shanghai
+::ahkjdbcurl::
+Send {Raw}jdbc:mysql://localhost:3306/mysql?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=Asia/Shanghai
 return
 
 ;;; gradle
@@ -427,43 +422,44 @@ Send maven {{} url 'https://maven.aliyun.com/repository/public/' {}}
 return
 
 ::glang3::
-Send implementation 'org.apache.commons:commons-lang3:3.12.0'
+Send {Raw}implementation 'org.apache.commons:commons-lang3:3.12.0'
 return
 
 ::gguava::
-Send implementation 'com.google.guava:guava:31.0.1-jre'
+Send {Raw}implementation 'com.google.guava:guava:31.0.1-jre'
 return
 
 ::gio::
-Send implementation 'commons-io:commons-io:2.11.0'
+Send {Raw}implementation 'commons-io:commons-io:2.11.0'
 return
 
-::gradlefastjson::
-Send implementation 'com.alibaba:fastjson:1.2.75'
+::gfastjson::
+Send {Raw}implementation 'com.alibaba:fastjson:1.2.75'
 return
 
-::gweb::
-Send implementation 'org.springframework.boot:spring-boot-starter-web'
+::gstarterweb::
+Send {Raw}implementation 'org.springframework.boot:spring-boot-starter-web'
 return
 
 ::gredis::
-Send implementation 'org.springframework.boot:spring-boot-starter-data-redis'`n    implementation 'org.apache.commons:commons-pool2:2.9.0'
+Send {Raw}implementation 'org.springframework.boot:spring-boot-starter-data-redis'`n
+Send {Raw}implementation 'org.apache.commons:commons-pool2:2.9.0'
 return
 
 ::gmybatis::
-Send implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.1'
+Send {Raw}implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.1'
 return
 
 ::gjdbcdriver::
-Send implementation 'mysql:mysql-connector-java'
+Send {Raw}implementation 'mysql:mysql-connector-java'
 return
 
 ::gaop::
-Send implementation 'org.springframework.boot:spring-boot-starter-aop'
+Send {Raw}implementation 'org.springframework.boot:spring-boot-starter-aop'
 return
 
 ::gsharding::
-Send implementation 'org.apache.shardingsphere:sharding-jdbc-spring-boot-starter:4.1.1'
+Send {Raw}implementation 'org.apache.shardingsphere:sharding-jdbc-spring-boot-starter:4.1.1'
 return
 
 ::dockerexec::
@@ -511,4 +507,24 @@ return
 
 ::fwrmport::
 Send firewall-cmd --zone=public --remove-port=-/tcp --permanent{LEFT 16}
+return
+
+::nohupnull::
+Send {Raw}nohup    >/dev/null 2>&1 &
+Send {LEFT 19}
+return
+
+::nohuplog::
+Send {Raw}nohup  > nohup.log 2>&1&
+Send {LEFT 18}
+return
+
+::nohuppid::
+Send {Raw}nohup  >  2>&1& echo $! > nohup.pid
+Send {LEFT 29}
+return
+
+::nohupall::
+Send {Raw}nohup  > nohup.log 2>&1& echo $! > nohup.pid
+Send {LEFT 38}
 return
