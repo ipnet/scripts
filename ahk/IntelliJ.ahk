@@ -520,8 +520,8 @@ Send {LEFT 18}
 return
 
 ::nohuppid::
-Send {Raw}nohup  >  2>&1& echo $! > nohup.pid
-Send {LEFT 29}
+Send {Raw}nohup  >/dev/null 2>&1 & echo $! > nohup.pid
+Send {LEFT 38}
 return
 
 ::nohupall::
